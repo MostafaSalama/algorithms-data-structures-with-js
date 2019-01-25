@@ -16,4 +16,25 @@ function linearOperations(n) {
         console.log(n) ;
     }
 }
-linearOperations(20) ; 
+linearOperations(20) ;
+
+/*
+    O(n**2) quadratic time
+    O(n**3) cubic time
+
+ */
+// simple example
+
+/**
+ * simple function to explain quadratic time O(n**2) 
+ * @param n {number}
+ */
+function quadraticOperations(n=20) {
+    for(let i =0 ; i<n;i++){
+        for(let j = 0 ; j<n;j++) {
+                console.log(i*j) ;
+        }
+    }
+
+}
+quadraticOperations() ;
