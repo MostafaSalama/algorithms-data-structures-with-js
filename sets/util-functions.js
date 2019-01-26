@@ -28,7 +28,24 @@ function isSuperSet(setA, subset) {
 	}
 	return true;
 }
+
+/**
+ * returns the union of two sets
+ * @param setA {Set}
+ * @param setB {Set}
+ * @return {Set}
+ */
+function unionSet(setA, setB) {
+	const union = new Set(setA);
+	for (let e of setB) {
+		if (!union.has(e)) {
+			union.add(e);
+		}
+	}
+	return union;
+}
 module.exports = {
 	intersectSets,
 	isSuperSet,
+	unionSet,
 };
