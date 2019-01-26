@@ -44,8 +44,23 @@ function unionSet(setA, setB) {
 	}
 	return union;
 }
+
+/**
+ * returns the difference between two sets
+ * @param setA {Set}
+ * @param setB {Set}
+ * @return {Set}
+ */
+function differenceSet(setA, setB) {
+	let difference = new Set(setA);
+	for (let e of setB) {
+		difference.delete(e);
+	}
+	return difference;
+}
 module.exports = {
 	intersectSets,
 	isSuperSet,
 	unionSet,
+	differenceSet,
 };
