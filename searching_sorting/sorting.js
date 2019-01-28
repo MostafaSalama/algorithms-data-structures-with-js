@@ -58,11 +58,11 @@ function quickSortHelper(items, left, right) {
 		index = partition(items, left, right);
 
 		if (left < index - 1) {
-			 quickSortHelper(items, left, index - 1);
+			quickSortHelper(items, left, index - 1);
 		}
 
 		if (index < right) {
-             quickSortHelper(items, index, right);
+			quickSortHelper(items, index, right);
 		}
 	}
 	return items;
@@ -86,5 +86,30 @@ function partition(array, left, right) {
 		}
 	}
 	return left;
+}
+
+/*
+	count sort for a limited range of integers
+	O(k+N)
+	O(k)
+ */
+function countSort(array) {
+	const hash = {},
+		countArr = [];
+	for (let i = 0; i < array.length; i++) {
+		if (!hash[array[i]]) {
+			hash[array[i]] = 1;
+		} else {
+			hash[array[i]]++;
+		}
+	}
+
+	for (let key in hash) {
+		// for any number of _ element, add it to array
+		for (let i = 0; i < hash[key]; i++) {
+			countArr.push(parseInt(key));
+		}
+	}
+	return countArr;
 }
 
