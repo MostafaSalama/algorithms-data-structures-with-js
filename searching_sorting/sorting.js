@@ -113,3 +113,12 @@ function countSort(array) {
 	return countArr;
 }
 
+// javascript built in sort
+
+const arr = [1,3,5,5,6,1,3,3,4] ;
+arr.sort() ;
+console.log(arr) ;
+arr.sort((a,b)=>a-b) ;
+console.log(arr) ;
+arr.sort((a,b)=>b-a) ;
+console.log(arr);
