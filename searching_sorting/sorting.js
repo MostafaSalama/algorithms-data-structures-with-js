@@ -23,3 +23,27 @@ function bubbleSort(array) {
 	return array;
 }
 
+/**
+ *  selection sort selects the minimum value and swaps it
+ *  Time Complexity: O(n2)
+ *  Space Complexity: O(1)
+ * @param array {Array}
+ * @returns {Array}
+ */
+function selectionSort(array) {
+	const length = array.length;
+	for (let i = 0; i < length; i++) {
+		let min = i; // set the minimum value
+		for (let j = i + 1; j < length; j++) {
+		    // check for the minimum value
+			if (array[j] < array[min]) {
+				min = j;
+			}
+		}
+		// change the position of the current minimum value
+		if (i !== min) {
+			swap(array, i, min);
+		}
+	}
+	return array;
+}
