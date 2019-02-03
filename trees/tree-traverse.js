@@ -9,3 +9,25 @@
 	BF Breadth First or Level Order
  */
 
+function TreeNode(value) {
+	this.value = value;
+	this.left = null;
+	this.right = null;
+}
+
+function inOrder(root, cb) {
+	if (!root) return;
+	inOrder(root.left, cb);
+	cb(root.value);
+	inOrder(root.right, cb);
+}
+
+const root = new TreeNode(10);
+root.left = new TreeNode(5);
+root.right = new TreeNode(15);
+root.right.right = new TreeNode(20);
+root.right.left = new TreeNode(12);
+
+inOrder(root, value => {
+	console.log(value); // 5 10 12 15 20
+});
