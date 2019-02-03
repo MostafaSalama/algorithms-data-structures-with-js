@@ -29,6 +29,12 @@ function preOrder(root, cb) {
 	preOrder(root.right, cb);
 }
 
+function postOrder(root, cb) {
+	if (!root) return;
+	postOrder(root.left, cb);
+	postOrder(root.right, cb);
+	cb(root.value);
+}
 const root = new TreeNode(10);
 root.left = new TreeNode(5);
 root.right = new TreeNode(15);
@@ -39,6 +45,10 @@ inOrder(root, value => {
 	console.log(value); // 5 10 12 15 20
 });
 
-preOrder(root,value=>{
-	console.log(value) ; // 10 5 15 12 20
-})
+preOrder(root, value => {
+	console.log(value); // 10 5 15 12 20
+});
+
+postOrder(root, value => {
+	console.log(value); // 5 12 20 15 10
+});
