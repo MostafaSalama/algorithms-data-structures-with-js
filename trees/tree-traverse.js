@@ -22,6 +22,13 @@ function inOrder(root, cb) {
 	inOrder(root.right, cb);
 }
 
+function preOrder(root, cb) {
+	if (!root) return;
+	cb(root.value);
+	preOrder(root.left, cb);
+	preOrder(root.right, cb);
+}
+
 const root = new TreeNode(10);
 root.left = new TreeNode(5);
 root.right = new TreeNode(15);
@@ -31,3 +38,7 @@ root.right.left = new TreeNode(12);
 inOrder(root, value => {
 	console.log(value); // 5 10 12 15 20
 });
+
+preOrder(root,value=>{
+	console.log(value) ; // 10 5 15 12 20
+})
