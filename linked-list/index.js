@@ -45,7 +45,29 @@ LinkedList.prototype.append = function(value) {
 	}
 	let last = this.head;
 	while (last.next !== null) {
-		last = last.next ;
+		last = last.next;
 	}
-	last.next =  new Node(value) ;
+	last.next = new Node(value);
+};
+
+/*
+delete the first occupancy of a specific vlaue
+ */
+
+LinkedList.prototype.deleteValue = function(value) {
+	let temp = this.head,
+		prev = null;
+	if (temp !== null && temp.value === value) {
+		this.head = temp.next;
+		return;
+	}
+	while (temp !== null && temp.value !== value) {
+		prev = temp;
+		temp = temp.next;
+	}
+	if (!temp) {
+		return -1;
+	}
+	prev.next = temp.next;
+	return temp;
 };
