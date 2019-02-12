@@ -35,3 +35,17 @@ LinkedList.prototype.insertAfter = function(prevNode, value) {
 	node.next = prevNode.next;
 	prevNode.next = node.next;
 };
+/*
+	append node to the end
+ */
+LinkedList.prototype.append = function(value) {
+	if (!this.head) {
+		this.head = new Node(value);
+		return;
+	}
+	let last = this.head;
+	while (last.next !== null) {
+		last = last.next ;
+	}
+	last.next =  new Node(value) ;
+};
