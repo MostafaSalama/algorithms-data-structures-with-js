@@ -107,3 +107,12 @@ LinkedList.prototype.find = function(value) {
 	}
 	return false;
 };
+LinkedList.prototype.getSize = function () {
+	let size = 0 ;
+	let current = this.head ;
+	while (current) {
+		size++ ;
+		current = current.next ; 
+	}
+	return size ;
+}
