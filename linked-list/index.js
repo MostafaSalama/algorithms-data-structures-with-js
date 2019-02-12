@@ -29,4 +29,9 @@ LinkedList.prototype.addFront = function(value) {
 	node.next = this.head;
 	this.head = node;
 };
-let linkedList = new LinkedList();
+LinkedList.prototype.insertAfter = function(prevNode, value) {
+	if (!prevNode) return;
+	const node = new Node(value);
+	node.next = prevNode.next;
+	prevNode.next = node.next;
+};
