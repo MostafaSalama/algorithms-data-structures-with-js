@@ -71,3 +71,26 @@ LinkedList.prototype.deleteValue = function(value) {
 	prev.next = temp.next;
 	return temp;
 };
+
+/*
+	delete node at specific position
+ */
+LinkedList.prototype.deletePosition = function(position) {
+	// empty list
+	if (!this.head) return;
+	let temp = this.head;
+	// delete the first Node
+	if (position === 0) {
+		this.head = temp.next;
+		return;
+	}
+	// go to that position
+	for (let i = 0; temp && i < position - 1; i++) {
+		temp = temp.next;
+	}
+	if (!temp || !temp.next) return;
+	// Node.next is the node to delete
+	const deleted = temp.next;
+	temp.next = temp.next.next;
+	return deleted;
+};
