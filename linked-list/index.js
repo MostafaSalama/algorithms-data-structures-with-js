@@ -94,3 +94,16 @@ LinkedList.prototype.deletePosition = function(position) {
 	temp.next = temp.next.next;
 	return deleted;
 };
+/**
+ * search for specific value in the list
+ * @param value
+ * @return {boolean}
+ */
+LinkedList.prototype.find = function(value) {
+	let current = this.head;
+	while (current) {
+		if (current.value === value) return true;
+		current = current.next;
+	}
+	return false;
+};
