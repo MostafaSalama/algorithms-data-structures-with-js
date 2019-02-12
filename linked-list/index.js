@@ -4,27 +4,29 @@
  */
 
 function Node(value) {
-    this.value = value ;
+	this.value = value;
 	this.next = null;
 }
 
 function LinkedList() {
-    this.head = null ;
-
+	this.head = null;
 }
 
-LinkedList.prototype.traverse = function(cb){
-    let current = this.head ;
-    while (current!== null) {
-        cb(current.value) ;
-        current = current.next ; 
-    }
-}
-let linkedList = new LinkedList() ;
-linkedList.head = new Node(2) ;
-linkedList.head.next = new Node(3) ;
-linkedList.head.next.next = new Node(3) ;
+LinkedList.prototype.traverse = function(cb) {
+	let current = this.head;
+	while (current !== null) {
+		cb(current.value);
+		current = current.next;
+	}
+};
+LinkedList.prototype.addFront = function(value) {
+	if (!this.head) {
+		this.head = new Node(value);
+		return;
+	}
 
-linkedList.traverse((value)=>{
-    console.log(`value is ${value}`)
-})
+	const node = new Node(value);
+	node.next = this.head;
+	this.head = node;
+};
+let linkedList = new LinkedList();
