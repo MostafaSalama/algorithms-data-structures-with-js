@@ -20,6 +20,20 @@ class BinaryTree {
 			 return rHeight + 1;
 
 	}
+	levelOrder(){
+	    const h = this.height(this.root);
+	    for(let i = 1 ; i<=h ; i++) {
+                this._printLevel(this.root,i) ;
+        }
+    }
+    _printLevel(root,level){
+        if(!root) return ;
+        if(level === 1) console.log(root.value) ;
+        else if (level > 1) {
+            this._printLevel(root.left,level-1) ;
+            this._printLevel(root.right,level-1) ;
+        }
+    }
 }
 
 const b = new BinaryTree() ;
@@ -29,3 +43,4 @@ b.root.right = new Node(20) ;
 b.root.right.right = new Node(20) ;
 b.root.right.right.right = new Node(20) ;
 console.log(b.height(b.root));
+b.levelOrder()
