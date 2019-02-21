@@ -59,4 +59,45 @@ class BinarySearchTree {
 		if (root.value > value) return this._searchRecursive(root.left, value);
 		return this._searchRecursive(root.right, value);
 	}
+	deleteValue(value) {
+		this.root = this._deleteRecursive(this.root, value);
+	}
+
+	_deleteRecursive(root, value) {
+		/* Base Case: If the tree is empty */
+		if (!root) return root;
+
+		/* Otherwise, recur down the tree */
+		if (value < root.value) root.left = this._deleteRecursive(root.left, value);
+		else if (value > root.value)
+			root.right = this._deleteRecursive(root.right, value);
+		// if value is same as root's value, then This is the node
+		// to be deleted
+		else {
+			// node with only one child or no child
+			if (root.left == null) {
+				return root.right;
+			} else if (root.right == null) {
+				return root.left;
+			}
+
+			// node with two children: Get the inOrder successor (smallest
+			// in the right subtree)
+			root.value = this.minValue(root.right);
+
+			// Delete the inorder successor
+			root.right = this._deleteRecursive(root.right, root.value);
+		}
+
+		return root;
+	}
+
+	minValue(root) {
+		let minValue = root.value;
+		while (root.left) {
+			minValue = root.left.value;
+			root = root.left;
+		}
+		return minValue;
+	}
 }
